@@ -1,0 +1,16 @@
+<h2><%= @post.title %></h2>
+<h3><a href="<%= @post.url %>">URL</a></h3>
+<p><%= @post.content %></p>
+
+<%= link_to "Edit Post", edit_post_url(@post) %>
+<br>
+<%= link_to "Add Comment", new_post_comment_url(@post) %>
+
+<h4>Comments:</h4>
+<%# @post.comments.where(parent_comment_id: nil).each do |comment| %>
+<% @all_comments[nil].each do |comment| %>
+  <%# next if comment.parent_comment_id != nil %>
+      <%#= link_to comment.content, comment_url(comment) %>
+
+  <%= render 'comments/comment', parent_comment: comment, childhash: @all_comments %>
+<% end %>

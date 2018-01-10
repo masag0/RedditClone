@@ -1,0 +1,12 @@
+<% @subs.try(:each) do |subb| %>
+  <ul>
+    <li>
+      <%= link_to subb.title, sub_url(subb) %>
+      <p>
+        <%= subb.description %>
+      </p>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to "Create Sub", new_sub_url %>

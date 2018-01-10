@@ -1,0 +1,21 @@
+<h2><%= @sub.title %></h2>
+
+<h3>Description: </h3>
+<p>
+  <%= @sub.description %>
+</p>
+
+<h3>Posts: </h3>
+<% @sub.posts.each do |post| %>
+<ul>
+  <li>
+    <%= link_to post.title, post_url(post) %>
+  </li>
+</ul>
+<% end %>
+
+<h4>Create a Post:</h4>
+<%= render 'posts/form', post: Post.new, sub_id: @sub.id %>
+
+<%= link_to "Edit Sub", edit_sub_url(@sub) %>
+<%= button_to "Delete Sub", sub_url(@sub), method: :delete %>

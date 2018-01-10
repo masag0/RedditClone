@@ -1,0 +1,20 @@
+
+
+
+<ul>
+  <li>(<%=parent_comment.child_comments.length  %>)
+  <%= link_to parent_comment.content, comment_url(parent_comment) %>
+  </li>
+
+
+  <% parent_comment.child_comments.each do |child| %>
+    <% if child.child_comments.empty? %>
+    <ul>
+      <li>(<%=child.child_comments.length  %>)
+      <%= link_to child.content, comment_url(child) %></li>
+    </ul>
+    <% else %>
+      <%= render 'comments/comment', parent_comment: child %>
+    <% end %>
+  <% end %>
+</ul>

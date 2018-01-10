@@ -1,0 +1,18 @@
+<% children = childhash[parent_comment.id] %>
+<ul>
+  <li>(<%= children.length  %>)
+  <%= link_to parent_comment.content, comment_url(parent_comment) %>
+  </li>
+
+
+  <% children.each do |child| %>
+    <% if childhash[child.id].empty? %>
+    <ul>
+      <li>(<%= childhash[child.id].length  %>)
+      <%= link_to child.content, comment_url(child) %></li>
+    </ul>
+    <% else %>
+      <%= render 'comments/comment', parent_comment: child, childhash: childhash %>
+    <% end %>
+  <% end %>
+</ul>
